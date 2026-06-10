@@ -12,6 +12,7 @@
         .clay-bg { background-color: #8B7E74; }
         .beige-border { border-color: #E6E1DA; }
         #modal-overlay { background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); }
+        #heroCanvas { position: absolute; top: 0; left: 0; z-index: 0; pointer-events: none; }
     </style>
 </head>
 <body class="earth-sand espresso-text font-sans">
@@ -33,6 +34,7 @@
 
     <!-- Hero -->
     <section id="about" class="relative pt-24 pb-20 md:pt-32 md:pb-32 flex items-center justify-center min-h-[85vh] overflow-hidden">
+        <canvas id="heroCanvas"></canvas>
         <div class="absolute inset-0 z-0 opacity-40">
             <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1920" alt="Workspace" class="w-full h-full object-cover">
         </div>
@@ -59,21 +61,95 @@
 
     <!-- Services -->
     <section id="services" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-[90rem] mx-auto px-6">
             <h2 class="text-3xl font-bold mb-10">Services & Expertise</h2>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col"><img src="https://drive.google.com/thumbnail?id=1sMj-rY44w3sV4lZ37txKqZtQ-WF_VRiH&sz=w800" class="h-40 w-full object-cover" alt="Systems"><div class="p-6"><h3 class="font-bold mb-2">Workflow & Systems</h3><p class="text-sm bark-text">Automated workflows in ClickUp, Trello, Notion.</p></div></div>
-                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col"><img src="https://drive.google.com/thumbnail?id=1TsWy1UYbgqA_68RJdZFzC_1o8o-mSliM&sz=w800" class="h-40 w-full object-cover" alt="VA"><div class="p-6"><h3 class="font-bold mb-2">Virtual Assistance</h3><p class="text-sm bark-text">Calendar, inbox, and lead management.</p></div></div>
-                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col"><img src="https://drive.google.com/thumbnail?id=1COW7Cm8XTmVuz3Sjdm55USoojzR6MCPY&sz=w800" class="h-40 w-full object-cover" alt="Admin"><div class="p-6"><h3 class="font-bold mb-2">Admin Support</h3><p class="text-sm bark-text">Docs, correspondence, audit-ready filing.</p></div></div>
-                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col"><img src="https://drive.google.com/thumbnail?id=1WlDlU8Kp2csn_-nQDamynF29Gh3s4EsE&sz=w800" class="h-40 w-full object-cover" alt="Content"><div class="p-6"><h3 class="font-bold mb-2">Content & Creative</h3><p class="text-sm bark-text">TikTok, YouTube, video editing, Canva graphics.</p></div></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+                <!-- Card 1 -->
+                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col">
+                    <img src="https://drive.google.com/thumbnail?id=1sMj-rY44w3sV4lZ37txKqZtQ-WF_VRiH&sz=w800" class="h-40 w-full object-cover" alt="Systems">
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold mb-4 text-lg">Workflow & Systems Setup</h3>
+                        <ul class="text-sm bark-text space-y-3 list-disc pl-4 marker:text-[#8B7E74]">
+                            <li><strong class="text-[#4A4238]">Integrated ClickUp Ecosystem:</strong> Centralized content, brand deals, and business ops into one trackable system.</li>
+                            <li><strong class="text-[#4A4238]">Brand Partnership CRM:</strong> Built a custom pipeline to manage 10+ active collaborations and deliverables.</li>
+                            <li><strong class="text-[#4A4238]">Automated Workflows:</strong> Designed end-to-end content production scales to ensure zero missed deadlines.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col">
+                    <img src="https://drive.google.com/thumbnail?id=1TsWy1UYbgqA_68RJdZFzC_1o8o-mSliM&sz=w800" class="h-40 w-full object-cover" alt="VA">
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold mb-4 text-lg">Virtual Assistance</h3>
+                        <ul class="text-sm bark-text space-y-3 list-disc pl-4 marker:text-[#8B7E74]">
+                            <li><strong class="text-[#4A4238]">Ads Optimization:</strong> Managed Meta Ads with a 5.43% CTR and $0.17 CPC via precision targeting.</li>
+                            <li><strong class="text-[#4A4238]">Brand Liaison:</strong> Handled professional correspondence with global brand partners.</li>
+                            <li><strong class="text-[#4A4238]">Web Tech Ops:</strong> Managed hosting migration for bandwidth and site stability.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col">
+                    <img src="https://drive.google.com/thumbnail?id=1COW7Cm8XTmVuz3Sjdm55USoojzR6MCPY&sz=w800" class="h-40 w-full object-cover" alt="Admin">
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold mb-4 text-lg">Administrative Support</h3>
+                        <ul class="text-sm bark-text space-y-3 list-disc pl-4 marker:text-[#8B7E74]">
+                            <li><strong class="text-[#4A4238]">Inbox & Liaison:</strong> Managed high volume daily correspondence and maintained professional partner relations.</li>
+                            <li><strong class="text-[#4A4238]">Technical Maintenance:</strong> Handled system verifications (GitHub/Vercel) and routine internal database audits.</li>
+                            <li><strong class="text-[#4A4238]">Operational Reporting:</strong> Delivered regular ad performance analysis and project status updates.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-[#F9F6F0] rounded-2xl border beige-border overflow-hidden flex flex-col">
+                    <img src="https://drive.google.com/thumbnail?id=1WlDlU8Kp2csn_-nQDamynF29Gh3s4EsE&sz=w800" class="h-40 w-full object-cover" alt="Content">
+                    <div class="p-6 flex-grow">
+                        <h3 class="font-bold mb-4 text-lg">Content & Creative Support</h3>
+                        <ul class="text-sm bark-text space-y-3 list-disc pl-4 marker:text-[#8B7E74]">
+                            <li><strong class="text-[#4A4238]">Content Upload:</strong> Light content uploads (TikTok, YouTube).</li>
+                            <li><strong class="text-[#4A4238]">Creative Support:</strong> Basic video editing, Canva graphics for social media and marketing materials.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Experience -->
     <section id="experience" class="py-20 px-6 max-w-6xl mx-auto grid lg:grid-cols-2 gap-16">
-        <div><h2 class="text-3xl font-bold mb-8">Work Experience</h2><div class="space-y-8"><div><h3 class="font-bold text-lg">Virtual Assistant</h3><p class="text-sm font-bold text-[#8B7E74]">US Creator (<strong>200k+ followers</strong>) • 2026 - Present</p><p class="text-sm bark-text mt-2">Built ClickUp brand CRM. Managed 8+ active collaborations and end-to-end content ops.</p></div><div><h3 class="font-bold text-lg">Admin Assistant</h3><p class="text-sm font-bold text-[#8B7E74]">PT Kusuma Somantri Putra • 2024 - Present</p><p class="text-sm bark-text mt-2">Managed <strong>120+ docs/month</strong>, executive travel, and government correspondence.</p></div></div></div>
-        <div><h2 class="text-3xl font-bold mb-8">Education & Certs</h2><div class="bg-white p-6 rounded-2xl border beige-border"><h3 class="font-bold text-lg">University of Padjadjaran</h3><p class="text-sm text-[#8B7E74] mb-4">S1 Geophysics (2019-2023)</p><div class="space-y-2 text-sm bark-text"><p>• Google Analytics (2026)</p><p>• Canva for Work (2026)</p><p>• ClickUp Novice Certificate</p><p>• Email Marketing HubSpot</p></div></div></div>
+        <div>
+            <h2 class="text-3xl font-bold mb-8">Work Experience</h2>
+            <div class="space-y-8">
+                <div>
+                    <h3 class="font-bold text-lg">US-Based Content Creator <span class="text-base font-normal text-[#7A736B]">as Virtual Assistant</span></h3>
+                    <p class="text-sm font-bold text-[#8B7E74]">Jan 2026 - Present <span class="font-normal text-[#4A4238]">(<strong>200k+ followers</strong>)</span></p>
+                    <p class="text-sm bark-text mt-2 leading-relaxed">Custom ClickUp Ecosystem, Content & Campaign Operations, Technical Systems Management, Strategic Inbox & Brand Support</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">PT Kusuma Somantri Putra <span class="text-base font-normal text-[#7A736B]">as Admin Assistant</span></h3>
+                    <p class="text-sm font-bold text-[#8B7E74]">2024 - 2025</p>
+                    <p class="text-sm bark-text mt-2 leading-relaxed"><strong>50+ docs/month</strong> • Executive travel logistics • Government correspondence</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Teraz Ramigoni & Tejos.id <span class="text-base font-normal text-[#7A736B]">as Freelance Ops</span></h3>
+                    <p class="text-sm font-bold text-[#8B7E74]">February 2026</p>
+                    <p class="text-sm bark-text mt-2 leading-relaxed">Brand launch workflows • Sales pipeline • Visual identity</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2 class="text-3xl font-bold mb-8">Education & Certs</h2>
+            <div class="bg-white p-6 rounded-2xl border beige-border">
+                <h3 class="font-bold text-lg">University of Padjadjaran</h3>
+                <p class="text-sm text-[#8B7E74] mb-4">S1 Geophysics (2019-2023)</p>
+                <div class="space-y-2 text-sm bark-text">
+                    <p>• Google Analytics (2026)</p>
+                    <p>• Canva for Work (2026)</p>
+                    <p>• ClickUp Novice Certificate</p>
+                    <p>• Email Marketing HubSpot</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Work Samples -->
@@ -81,9 +157,18 @@
         <div class="max-w-6xl mx-auto px-6">
             <h2 class="text-3xl font-bold mb-10">Work Samples</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-[#5C5346] rounded-2xl cursor-pointer overflow-hidden" onclick="openModal(1)"><img src="https://drive.google.com/thumbnail?id=1O2KJS9O5xQKXMgCQ6eKI64EKC7CBLzuP&sz=w800" class="w-full h-48 object-cover opacity-80" alt="CRM"><div class="p-6"><h3 class="font-bold text-lg">Partnership CRM & Content Ops</h3></div></div>
-                <div class="bg-[#5C5346] rounded-2xl cursor-pointer overflow-hidden" onclick="openModal(2)"><img src="https://drive.google.com/thumbnail?id=1kK5IT0I1TsP4Kmxtpv4NRnExcDCZwcCz&sz=w800" class="w-full h-48 object-cover opacity-80" alt="Admin"><div class="p-6"><h3 class="font-bold text-lg">Executive Admin & Logistics</h3></div></div>
-                <div class="bg-[#5C5346] rounded-2xl cursor-pointer overflow-hidden" onclick="openModal(3)"><img src="https://drive.google.com/thumbnail?id=1zdEmPyMfcduVO5TODh9MeXIkb7ADGBmx&sz=w800" class="w-full h-48 object-cover opacity-80" alt="Content"><div class="p-6"><h3 class="font-bold text-lg">Content & Creative Support</h3></div></div>
+                <div class="bg-[#5C5346] rounded-2xl cursor-pointer overflow-hidden transition-transform hover:-translate-y-1" onclick="openModal(1)">
+                    <img src="https://drive.google.com/thumbnail?id=1O2KJS9O5xQKXMgCQ6eKI64EKC7CBLzuP&sz=w800" class="w-full h-48 object-cover opacity-80" alt="Workflow">
+                    <div class="p-6"><h3 class="font-bold text-lg">Workflow & Systems</h3></div>
+                </div>
+                <div class="bg-[#5C5346] rounded-2xl cursor-pointer overflow-hidden transition-transform hover:-translate-y-1" onclick="openModal(2)">
+                    <img src="https://drive.google.com/thumbnail?id=1kK5IT0I1TsP4Kmxtpv4NRnExcDCZwcCz&sz=w800" class="w-full h-48 object-cover opacity-80" alt="Admin">
+                    <div class="p-6"><h3 class="font-bold text-lg">Administrative Support</h3></div>
+                </div>
+                <div class="bg-[#5C5346] rounded-2xl cursor-pointer overflow-hidden transition-transform hover:-translate-y-1" onclick="openModal(3)">
+                    <img src="https://drive.google.com/thumbnail?id=1zdEmPyMfcduVO5TODh9MeXIkb7ADGBmx&sz=w800" class="w-full h-48 object-cover opacity-80" alt="Content">
+                    <div class="p-6"><h3 class="font-bold text-lg">Content & Creative Support</h3></div>
+                </div>
             </div>
         </div>
     </section>
@@ -91,9 +176,9 @@
     <!-- Modal -->
     <div id="modal-overlay" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
         <div class="bg-[#F9F6F0] max-w-2xl w-full p-8 rounded-3xl max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="float-right font-bold text-xl">✕</button>
-            <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
-            <p id="modal-desc" class="mb-6"></p>
+            <button onclick="closeModal()" class="float-right font-bold text-xl text-[#4A4238]">✕</button>
+            <h2 id="modal-title" class="text-2xl font-bold mb-4 text-[#4A4238]"></h2>
+            <p id="modal-desc" class="mb-6 text-[#7A736B] leading-relaxed"></p>
             <div id="modal-images" class="space-y-6"></div>
         </div>
     </div>
@@ -116,31 +201,63 @@
     </footer>
 
     <script>
+        // Data lengkap dengan paragraf penjelasan untuk masing-masing work sample
         const projectData = {
-            1: { title: "Partnership CRM & Content Ops", desc: "CRM & Workflow management.", images: [
-                { src: "https://drive.google.com/thumbnail?id=1O2KJS9O5xQKXMgCQ6eKI64EKC7CBLzuP&sz=w800", cap: "CRM Dashboard" },
-                { src: "https://drive.google.com/thumbnail?id=1mjqyzWlCfkc6VlyKMswK-1xjTtne3BAL&sz=w800", cap: "Workflow Organization" }
-            ]},
-            2: { title: "Executive Admin & Logistics", desc: "Admin and Logistics management.", images: [
-                { src: "https://drive.google.com/thumbnail?id=1kK5IT0I1TsP4Kmxtpv4NRnExcDCZwcCz&sz=w800", cap: "Booking Documentation" },
-                { src: "https://drive.google.com/thumbnail?id=1YZLnWTC48Le46F9eTp1s-BM72Tu-kcur&sz=w800", cap: "Financial Invoicing" }
-            ]},
-            3: { title: "Content & Creative Support", desc: "Content and Creative support.", images: [
-                { src: "https://drive.google.com/thumbnail?id=1zdEmPyMfcduVO5TODh9MeXIkb7ADGBmx&sz=w800", cap: "Analytics Studio" },
-                { src: "https://drive.google.com/thumbnail?id=1asA1uLJEzZOnkhwFTYQw2puGffWg0oE_&sz=w800", cap: "Canva Creative Asset" },
-                { src: "https://drive.google.com/thumbnail?id=1zIfVv_9cLPMEUFBZReOAc78LTjRdxtTv&sz=w800", cap: "Video Editing Portfolio" }
-            ]}
+            1: { 
+                title: "Workflow & Systems", 
+                desc: "Architected a multi-business ecosystem in ClickUp, migrating scattered tasks into a unified, trackable database for 4+ separate revenue streams.<br><br>I adapt to whatever tools the client uses, whether ClickUp, Trello, or Notion, to make sure nothing falls through the cracks.", 
+                images: [
+                    { src: "https://drive.google.com/thumbnail?id=1O2KJS9O5xQKXMgCQ6eKI64EKC7CBLzuP&sz=w800", cap: "CRM Dashboard" },
+                    { src: "https://drive.google.com/thumbnail?id=1mjqyzWlCfkc6VlyKMswK-1xjTtne3BAL&sz=w800", cap: "Workflow Organization" }
+                ] 
+            },
+            2: { 
+                title: "Administrative Support", 
+                desc: "Managing daily business operations with high precision. My work involves creating automated sales trackers, generating professional invoices, and handling brand email correspondence.<br><br>I also bridge the gap between admin and tech by managing Vercel web deployments and domain setups to ensure all back-end systems run smoothly and stay up-to-date.", 
+                images: [
+                    { src: "https://drive.google.com/thumbnail?id=1kK5IT0I1TsP4Kmxtpv4NRnExcDCZwcCz&sz=w800", cap: "Booking Documentation" },
+                    { src: "https://drive.google.com/thumbnail?id=1YZLnWTC48Le46F9eTp1s-BM72Tu-kcur&sz=w800", cap: "Financial Invoicing" }
+                ] 
+            },
+            3: { 
+                title: "Content & Creative Support", 
+                desc: "Handling day-to-day content operations and creative execution.<br><br>I manage multi-platform uploads (YouTube, TikTok, Instagram), moderate community interactions by filtering comments, and design promotional assets using Canva.<br><br>I also support the post-production process through basic video editing.", 
+                images: [
+                    { src: "https://drive.google.com/thumbnail?id=1zdEmPyMfcduVO5TODh9MeXIkb7ADGBmx&sz=w800", cap: "Analytics Studio" },
+                    { src: "https://drive.google.com/thumbnail?id=1asA1uLJEzZOnkhwFTYQw2puGffWg0oE_&sz=w800", cap: "Canva Creative Asset" },
+                    { src: "https://drive.google.com/thumbnail?id=1zIfVv_9cLPMEUFBZReOAc78LTjRdxtTv&sz=w800", cap: "Video Editing Portfolio" }
+                ] 
+            }
         };
 
         function openModal(id) {
             const p = projectData[id];
             document.getElementById('modal-title').innerText = p.title;
-            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-desc').innerHTML = p.desc; // Menggunakan innerHTML agar <br> bisa dibaca sebagai spasi paragraf
             const imgCont = document.getElementById('modal-images');
-            imgCont.innerHTML = p.images.map(i => `<div class="space-y-2"><img src="${i.src}" class="w-full rounded-xl"><p class="text-center font-bold text-sm bark-text">${i.cap}</p></div>`).join('');
+            imgCont.innerHTML = p.images.map(i => `<div class="space-y-2"><img src="${i.src}" class="w-full rounded-xl shadow-sm border border-[#E6E1DA]"><p class="text-center font-bold text-sm bark-text">${i.cap}</p></div>`).join('');
             document.getElementById('modal-overlay').classList.remove('hidden');
         }
         function closeModal() { document.getElementById('modal-overlay').classList.add('hidden'); }
+
+        const canvas = document.getElementById('heroCanvas');
+        if(canvas) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            const particles = [];
+            for(let i=0; i<60; i++) particles.push({x: Math.random()*canvas.width, y: Math.random()*canvas.height, size: Math.random()*2, speedX: Math.random()-0.5, speedY: Math.random()-0.5});
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#8B7E74';
+                particles.forEach(p => {
+                    p.x += p.speedX; p.y += p.speedY;
+                    if(p.x<0 || p.x>canvas.width) p.speedX*=-1; if(p.y<0 || p.y>canvas.height) p.speedY*=-1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
     </script>
 </body>
 </html>
