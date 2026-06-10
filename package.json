@@ -1,0 +1,20 @@
+{
+  "name": "va-portfolio-safhira",
+  "version": "1.0.0",
+  "description": "Safhira Putri's Virtual Assistant Portfolio",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "dev": "npx serve .",
+    "lint": "echo 'No linter configured for static HTML'"
+  },
+  "keywords": [
+    "portfolio",
+    "virtual-assistant"
+  ],
+  "author": "Safhira Putri",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
